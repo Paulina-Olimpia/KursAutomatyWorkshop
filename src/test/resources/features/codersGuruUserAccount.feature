@@ -1,19 +1,21 @@
 Feature: Account Creation on CodersGuru
 
-  Scenario: Register private user can on the CodersGuru website
+  Scenario Outline: Register private user can on the CodersGuru website
 
-    Given an open browser with website https://men-men-s-01.codersguru.pl
-    When user enters chosen email address galona@itfast.net
+    Given an open browser with website <websiteAddress>
+    When user enters chosen email address <emailAddress>
     And user clicks Register button
-    And user enters name Jan
-    And user enters surname Kowalski
-    And user enters first password Haslo123
-    And user enters second password Haslo123
-    And user enters city Bytom
-    And user enters postcode 41-411
-    And user enters street Bytomska
-    And user enters home number 22
+    And user enters name <name>
+    And user enters surname <surname>
+    And user enters first password <firstPassword>
+    And user enters second password <secondPassword>
+    And user enters city <city>
+    And user enters postcode <postcode>
+    And user enters street <street>
+    And user enters home number <number>
     And user accepts the terms and conditions
     And user clicks the register button
-    Then user is registered
-
+    Then the name <visibleName> is visible and user is registered
+    Examples:
+      |  websiteAddress                     | emailAddress   | name  | surname | firstPassword | secondPassword| city | postcode | street | number| visibleName |
+      |  https://men-men-s-01.codersguru.pl | tenadres@wp.pl | Jacek | Nowak   | ssGG127!as    | ssGG127!as    | Radom| 92-000   |Zawiszy | 12    | Jacek       |
